@@ -12,6 +12,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.hardware.Sensor;
@@ -69,6 +70,16 @@ public class ListShops extends AppCompatActivity implements SensorEventListener 
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         senSensorManager.registerListener(this, senAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                // по позиции получаем выбранный элемент
+                //String selectedItem =
+                // установка текста элемsента TextView
+                //selection.setText(selectedItem);
+
+            }
+        });
     }
     // When AddEditNoteActivity completed, it sends feedback.
     // (If you start it using startActivityForResult ())

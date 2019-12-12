@@ -14,7 +14,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "SQLite";
     private static final String DATABASE_NAME = "DataBase.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     public MyDBHelper(Context context)  {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -58,10 +58,10 @@ public class MyDBHelper extends SQLiteOpenHelper {
             Shop shop2 = new Shop("Анемон","2","3",1);
             Shop shop3 = new Shop("Самцветок","3","1",2);
             Shop shop4 = new Shop("Flowers","4","5",2);
-            Shop shop5 = new Shop("Твой букет1","8","1",1);
-            Shop shop6 = new Shop("Анемон1","0","6",2);
-            Shop shop7 = new Shop("Самцветок1","3","9",1);
-            Shop shop8 = new Shop("Flowers1","a","0",1);
+            Shop shop5 = new Shop("Бутоника","8","1",1);
+            Shop shop6 = new Shop("101 цветок","0","6",2);
+            Shop shop7 = new Shop("1001 роза","3","9",1);
+            Shop shop8 = new Shop("ROSE BAR","a","0",1);
             this.addShop(shop1);
             this.addShop(shop2);
             this.addShop(shop3);
