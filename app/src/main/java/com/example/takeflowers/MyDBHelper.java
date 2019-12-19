@@ -92,14 +92,14 @@ public class MyDBHelper extends SQLiteOpenHelper {
     }
 
 
-    public Shop getShop(int id) {
-        Log.i(TAG, "MyDBHelper.getShop ... " + id);
+    public Shop getShop(String name) {
+        Log.i(TAG, "MyDBHelper.getShop ... " + name);
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_NAME, new String[] { COLUMN_ID,
-                        COLUMN_NAME, COLUMN_ADDRESS, COLUMN_TELEPHONE, COLUMN_DOSTAVKA }, COLUMN_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
+                        COLUMN_NAME, COLUMN_ADDRESS, COLUMN_TELEPHONE, COLUMN_DOSTAVKA }, COLUMN_NAME + "=?",
+                new String[] { String.valueOf(name) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
@@ -171,4 +171,5 @@ public class MyDBHelper extends SQLiteOpenHelper {
         // return count
         return count;
     }
+
 }

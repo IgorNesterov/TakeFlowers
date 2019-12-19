@@ -3,4 +3,7 @@
     <string name="get_shops">Выбрать магазин</string>
     <string name="ex">Выход</string>
     <string name="lang">Язык</string>
+    <string name="address">Aдрес</string>
+    <string name="telephone">Телефон</string>
+    <string name="name">Название</string>
 </resources>

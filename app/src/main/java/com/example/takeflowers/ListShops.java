@@ -10,6 +10,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.ContextMenu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ListShops extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager senSensorManager;
@@ -33,11 +35,10 @@ public class ListShops extends AppCompatActivity implements SensorEventListener 
 
     private ListView listView;
 
-
     private static final int MY_REQUEST_CODE = 1000;
 
-    private List<Shop> shopList = new ArrayList<Shop>();
-    private ArrayAdapter<Shop> listViewAdapter;
+    public List<Shop> shopList = new ArrayList<Shop>();
+    public ArrayAdapter<Shop> listViewAdapter;
 
     //private boolean needRefresh=false;
 
@@ -47,13 +48,16 @@ public class ListShops extends AppCompatActivity implements SensorEventListener 
         setContentView(R.layout.activity_list_shops);
 
 
+
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.listView);
 
         MyDBHelper db = new MyDBHelper(this);
         db.createDefaultShopsIfNeed();
 
-        List<Shop> list=  db.getAllShops();
+
+
+        List<Shop> list = db.getAllShops();
         this.shopList.addAll(list);
 
 
@@ -69,18 +73,28 @@ public class ListShops extends AppCompatActivity implements SensorEventListener 
 
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        senSensorManager.registerListener(this, senAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
+        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        final AppCompatActivity obj = this;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                // по позиции получаем выбранный элемент
-                //String selectedItem =
-                // установка текста элемsента TextView
-                //selection.setText(selectedItem);
 
+            @Override
+            public void onItemClick(AdapterView<?> parent, View itemClicked, int position,
+                                    long id) {
+                TextView textView = (TextView) itemClicked;
+                String strText = textView.getText().toString(); // получаем текст нажатого элемента
+
+                //if(strText.equalsIgnoreCase(getResources().getString(R.string.name1))) {
+                Intent i;
+                i = new Intent(obj, ElementActivity.class);
+                i.putExtra("name", strText);
+                startActivity(i);
+                // }
             }
         });
+
+
     }
+
     // When AddEditNoteActivity completed, it sends feedback.
     // (If you start it using startActivityForResult ())
     @Override
@@ -101,13 +115,13 @@ public class ListShops extends AppCompatActivity implements SensorEventListener 
         }
     }
 
-    public List<Shop> mixList(){
+    public List<Shop> mixList() {
         List<Shop> tmp1 = this.shopList;
         List<Shop> tmp2 = this.shopList;
         tmp2.clear();
-        int listSize=tmp1.size();
-        for(int i=0;i<listSize;i++){
-            int x = 0+(int)(Math.random()*(listSize+1))-1;
+        int listSize = tmp1.size();
+        for (int i = 0; i < listSize; i++) {
+            int x = 0 + (int) (Math.random() * (listSize + 1)) - 1;
 
             tmp2.add(tmp1.get(x));
             tmp1.remove(x);
@@ -132,7 +146,7 @@ public class ListShops extends AppCompatActivity implements SensorEventListener 
                 long diffTime = (curTime - lastUpdate);
                 lastUpdate = curTime;
 
-                float speed = Math.abs(x + y + z - last_x - last_y - last_z)/ diffTime * 10000;
+                float speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
 
                 if (speed > SHAKE_THRESHOLD) {
                     this.shopList.clear();

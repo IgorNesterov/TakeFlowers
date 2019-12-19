@@ -1,11 +1,12 @@
-<resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-</resources>
+<component name="libraryTable">
+    <library name="Gradle: com.google.android.gms:play-services-base:17.0.0@aar">
+        <CLASSES>
+            <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2fba3eb262bab1a91bab8be3737040ee/jars/classes.jar!/" />
+            <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2fba3eb262bab1a91bab8be3737040ee/res" />
+        </CLASSES>
+        <style name="AppTheme.NoActionBar">
+            <item name="windowActionBar">false</item>
+            <item name="windowNoTitle">true</item>
+        </style>
+        <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+        <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

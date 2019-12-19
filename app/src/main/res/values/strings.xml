@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">TakeFlowers</string>
-    <string name="get_shops">Change shop</string>
-    <string name="ex">Exit</string>
-    <string name="lang">Language</string>
+    <string name="get_shops">Выбрать магазин</string>
+    <string name="ex">Выход</string>
+    <string name="lang">Язык</string>
+    <string name="address">Aдрес</string>
+    <string name="telephone">Телефон</string>
+    <string name="name">Название</string>
 </resources>

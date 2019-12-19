@@ -3,4 +3,7 @@
     <string name="get_shops">Change shop</string>
     <string name="ex">Exit</string>
     <string name="lang">Language</string>
+    <string name="address">Address</string>
+    <string name="telephone">Telephone</string>
+    <string name="name">Label</string>
 </resources>
